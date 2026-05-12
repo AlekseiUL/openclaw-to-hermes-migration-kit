@@ -1,0 +1,34 @@
+source:
+  openclaw_root: ~/.openclaw
+  agent_id: CHANGE_ME
+  visible_name: CHANGE_ME
+  role_files: []
+  memory_paths: []
+  session_paths: []
+  skill_paths: []
+  cron_paths: []
+  telegram:
+    env_key: TELEGRAM_BOT_TOKEN_CHANGE_ME
+    username: null
+    old_holder: null
+
+target:
+  hermes_profile: orchestrator-CHANGE_ME
+  workspace: <target-workspace>/agents/CHANGE_ME
+  wiki_page: <target-workspace>/wiki/agents/CHANGE_ME/README.md
+  provider_route: openai-codex
+  telegram_policy: dm-only
+
+migration:
+  mode: dry-run
+  migrate_secrets: false
+  migrate_sessions_as_legacy: true
+  copy_by_value: true
+  symlinks_allowed: false
+  approval_required_for_apply: true
+
+verification:
+  model_smoke: "Ответь ровно: OK"
+  secret_scan_required: true
+  active_pointer_scan_required: true
+  duplicate_polling_check_required: true

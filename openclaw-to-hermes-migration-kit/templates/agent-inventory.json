@@ -1,0 +1,20 @@
+{
+  "source_root": "~/.openclaw",
+  "generated_by": "openclaw_hermes_audit.py",
+  "agents": [
+    {
+      "agent_id": "example",
+      "visible_name": null,
+      "agent_dir": "~/.openclaw/agents/example",
+      "role_files": [],
+      "memory_files": [],
+      "sessions_count": 0,
+      "skills": [],
+      "tools_or_scripts": [],
+      "cron_refs": [],
+      "telegram_env_keys": [],
+      "provider_auth_files_present": [],
+      "notes": []
+    }
+  ]
+}

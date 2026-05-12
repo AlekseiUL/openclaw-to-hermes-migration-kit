@@ -1,0 +1,29 @@
+{
+  "source": "~/.openclaw",
+  "mode": "read_only_schema_and_metadata_no_row_contents",
+  "count": 2,
+  "items": [
+    {
+      "path": "agents/example/sessions.sqlite",
+      "kind": "sqlite",
+      "size_bytes": 123456,
+      "sha256_first_1mb": "example-hash-prefix",
+      "secret_name_risk": false,
+      "recommended_action": "archive_plus_summarize_not_direct_import",
+      "sqlite": {
+        "quick_check": "ok",
+        "tables": [
+          {"name": "sessions", "type": "table", "row_count": 42}
+        ],
+        "errors": []
+      }
+    },
+    {
+      "path": "agents/example/vectorstore",
+      "kind": "vector_directory",
+      "size_bytes": null,
+      "secret_name_risk": false,
+      "recommended_action": "rebuild_from_source_documents_if_available"
+    }
+  ]
+}

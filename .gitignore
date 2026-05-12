@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Local audit outputs
+*openclaw-audit*.json
+*openclaw-storage*.json
+migration-output/
+reports-private/
+*.redacted.before
+*.secret-scan.json
+
+# Secrets / auth / local state
+.env
+*.env
+auth.json
+hosts.yml
+*.session
+*.sqlite
+*.sqlite3
+*.db
+*.db-wal
+*.db-shm
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
