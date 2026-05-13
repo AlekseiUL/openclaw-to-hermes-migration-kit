@@ -2,6 +2,17 @@
 
 A safety-first migration toolkit for moving OpenClaw-style agent setups into [Hermes Agent](https://github.com/NousResearch/hermes-agent) without losing roles, memory, skills, automations, messaging setup, or rollback control.
 
+## Canonical source
+
+This project is maintained by Aleksei Ulianov / Sprut_AI.
+Original repository: https://github.com/AlekseiUL/openclaw-to-hermes-migration-kit
+
+If you found this project mirrored, repackaged, or redistributed elsewhere, check this repository as the source of truth.
+
+## Attribution
+
+Where permitted by the applicable license, if you reuse, fork, modify, package, or publish this work, keep the original copyright and license notice and link back to the canonical repository.
+
 This is not a “copy the old folder and hope” package. It is a practical operator kit: audit first, redact secrets, map profiles, migrate one agent at a time, verify behavior, and keep rollback available.
 
 ## Who this is for
