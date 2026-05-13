@@ -22,6 +22,20 @@ This is not a “copy the old folder and hope” package. It is a practical oper
 - Consultants or operators who need a repeatable migration checklist for client machines.
 - Agent builders who care about secrets, duplicate polling, memory boundaries, and post-migration verification.
 
+## Migration flow
+
+```mermaid
+flowchart LR
+    A[Audit OpenClaw source] --> B[Redact secrets]
+    B --> C[Map agents, skills, memory, crons]
+    C --> D[Migrate one profile at a time]
+    D --> E[Verify behavior and messaging]
+    E --> F{Pass?}
+    F -->|yes| G[Cut over]
+    F -->|no| H[Rollback and fix]
+    H --> D
+```
+
 ## What is included
 
 - Read-only audit scripts for OpenClaw agent footprint discovery.
