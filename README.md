@@ -149,6 +149,41 @@ LICENSE
 - It does not require sending private `.env`, sessions, or audit dumps to an agent chat.
 - It does not replace human approval for Telegram, OAuth, subscriptions, or production automations.
 
+## Русская версия
+
+OpenClaw to Hermes Migration Kit - это безопасный набор для переноса OpenClaw-style агентских setups в Hermes Agent.
+
+Он нужен, когда у вас уже есть старый агентный контур: persona, skills, memory, scripts, automations или routing rules, и вы хотите перенести это в Hermes без ручного хаоса. Идея простая: сначала inventory, потом mapping, потом перенос по шагам, затем проверка.
+
+## Что внутри
+
+- migration flow из OpenClaw-style структуры в Hermes Agent;
+- checklist для безопасного переноса;
+- templates для профиля/skills/memory;
+- правила, что переносить напрямую, а что адаптировать;
+- safety notes, чтобы не утащить secrets, runtime мусор и приватную историю;
+- инструкции по установке как Hermes skill или ручному использованию.
+
+## Для кого
+
+- для пользователей OpenClaw-style setups, которые переходят на Hermes Agent;
+- для тех, кто хочет сохранить полезные skills и memory patterns;
+- для операторов, которым нужен audit перед migration;
+- для команд, где нельзя просто скопировать старый workspace целиком.
+
+## Что это не делает
+
+Kit не мигрирует секреты, cookies, auth state, приватные sessions и live runtime автоматически. Он не заменяет ручной review. Это карта переноса и safety gate, а не кнопка “перетащить всё”.
+
+## Быстрый старт
+
+```bash
+git clone https://github.com/AlekseiUL/openclaw-to-hermes-migration-kit.git
+cd openclaw-to-hermes-migration-kit
+```
+
+Сначала пройдите inventory старого setup, затем переносите только проверенные artifacts в Hermes profile.
+
 ## Links / Resources
 
 - YouTube: https://youtube.com/@alekseiulianov
