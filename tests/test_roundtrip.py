@@ -3,7 +3,7 @@ ROOT=pathlib.Path(__file__).resolve().parents[1]
 class Migration(unittest.TestCase):
     def test_dry_apply_conflict_rollback_and_secret_reference(self):
         with tempfile.TemporaryDirectory() as td:
-            home=pathlib.Path(td); src=home/'source'; src.mkdir()
+            home=pathlib.Path(td).resolve(); src=home/'source'; src.mkdir()
             (src/'.env').write_text('API_TOKEN=synthetic-do-not-copy\n')
             env={**os.environ,'HOME':td}
             p=subprocess.run([sys.executable,str(ROOT/'scripts/openclaw_hermes_audit.py'),'--source',str(src)],env=env,capture_output=True,text=True,check=True)
