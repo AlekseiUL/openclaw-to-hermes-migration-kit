@@ -3,7 +3,7 @@
 Default is dry-run; --apply writes only non-secret scaffold files.
 """
 from __future__ import annotations
-import argparse, json
+import argparse, json, re
 from pathlib import Path
 
 
@@ -12,9 +12,13 @@ def main():
     ap.add_argument('--agent', required=True)
     ap.add_argument('--profile', required=True)
     ap.add_argument('--workspace-root', default='<target-workspace>/agents')
-    ap.add_argument('--dry-run', action='store_true')
-    ap.add_argument('--apply', action='store_true')
+    mode = ap.add_mutually_exclusive_group()
+    mode.add_argument('--dry-run', action='store_true')
+    mode.add_argument('--apply', action='store_true')
     args = ap.parse_args()
+    for value in [args.agent, args.profile]:
+        if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,63}', value):
+            ap.error('agent and profile must be simple names, not paths')
     home = Path(args.workspace_root).expanduser() / args.agent
     profile = Path.home() / '.hermes' / 'profiles' / args.profile
     files = {
@@ -26,9 +30,15 @@ def main():
     plan = {"agent": args.agent, "profile": args.profile, "workspace": str(home), "profile_path": str(profile), "files": list(files)}
     if args.apply:
         for path, content in files.items():
-            p = Path(path); p.parent.mkdir(parents=True, exist_ok=True)
-            if not p.exists():
-                p.write_text(content, encoding='utf-8')
+            p = Path(path)
+            if p.is_symlink() or any(parent.is_symlink() for parent in p.parents):
+                ap.error('symlink destination refused')
+            p.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                with p.open('x', encoding='utf-8') as output:
+                    output.write(content)
+            except FileExistsError:
+                pass
         plan['applied'] = True
     else:
         plan['applied'] = False
